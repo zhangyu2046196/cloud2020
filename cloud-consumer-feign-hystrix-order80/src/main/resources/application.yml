@@ -1,0 +1,24 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-feign-hystrix-service    #服务名
+
+eureka:
+  client:
+    register-with-eureka: true            #表示 将自己注册到eureka server  默认是true
+    fetch-registry: true                  #是否从eureka server提取已有的注册信息，默认true，单节点无所谓，但是集群必须设置true ribbon才能实现负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka   #eureka server的地址
+
+#openfeign默认超时时间是1秒，默认内置了ribbon
+ribbon:
+  # 指的是建立连接所用的时间,适用于网络状态正常的情况下,两端连接所用的时间
+  ReadTimeout: 5000
+  # 指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: true     #开启服务降级

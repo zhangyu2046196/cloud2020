@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    config:
+      label: master # 分支名称
+      name: config #配置文件名称
+      profile: dev # 读取的后缀，上述三个综合，为master分支上的config-dev.yml的配置文件被读取，http://config-3344.com:3344/master/config-dev.yml
+      uri: http://config3344.com:3344 #配置中心的地址
+  #ribbitmq相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    register-with-eureka: true            #表示 将自己注册到eureka server  默认是true
+    fetch-registry: true                  #是否从eureka server提取已有的注册信息，默认true，单节点无所谓，但是集群必须设置true ribbon才能实现负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka   #eureka server的地址
+
+
+# 暴露监控端点 用于实现配置中心内容修改后业务服务自动刷新配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: dev     #测试通过DataId方案进行分类配置
+    #active: test   #测试通过DataId方案进行分类配置
+    #active: info   #测试通过Group方案进行分类配置

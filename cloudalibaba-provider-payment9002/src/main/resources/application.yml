@@ -1,0 +1,18 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: payment-service-nacos
+  cloud:
+    nacos:
+      discovery:
+        #server-addr: localhost:8848  #注册中心地址
+        server-addr: 192.168.1.18:80  #注册中心地址,访问的是nginx地址,通过nginx访问nacos
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
