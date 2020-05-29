@@ -17,6 +17,12 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <!-- springboot admin 客户端 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.2.3</version>
+        </dependency>
         <dependency>
             <groupId>com.youyuan.springcloud</groupId>
             <artifactId>cloud-api-commons</artifactId>

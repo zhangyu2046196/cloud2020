@@ -12,7 +12,7 @@ spring:
         server-addr: localhost:8848    #指定配置中心地址
         file-extension: yaml           # 指定yaml 格式的配置
         group: DEV_GROUP               #指定读取那个分组下面配置文件
-        namespace: 616f6eb1-9c8a-4f1d-ae56-16d830952ce3   #指定读取命名空间下的配置
+        namespace: 8e02fa3f-a4ef-4d6f-9d05-57dc38931ce9   #指定读取命名空间下的配置
 
 
 # 读取配置中心配置文件名是下面格式  按照目前配置内容，配置文件是 nacos-config-client-dev.yaml
@@ -23,3 +23,6 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
