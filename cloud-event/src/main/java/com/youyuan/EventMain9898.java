@@ -1,25 +1,21 @@
-package com.youyuan.springcloud.sentinel;
+package com.youyuan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author zhangy
  * @version 1.0
  * @description
- * @date 2020/4/21 22:20
+ * @date 2020/6/30 20:06
  */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@EnableAsync
-public class ConsumerMain84 {
-
+public class EventMain9898 {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerMain84.class, args);
+        SpringApplication.run(EventMain9898.class, args);
     }
-
 }

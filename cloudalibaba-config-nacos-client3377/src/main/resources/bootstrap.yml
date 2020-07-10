@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: nacos-config-client
+    name: order-service-nacos
   cloud:
     nacos:
       discovery:
