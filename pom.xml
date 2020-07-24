@@ -44,6 +44,7 @@
         <module>admin-server</module>
         <module>cloud-xxl-job</module>
         <module>cloud-event</module>
+        <module>cloud-decorator</module>
     </modules>
     <packaging>pom</packaging>
 
