@@ -3,6 +3,7 @@ package com.youyuan.springcloud.impl;
 import com.youyuan.springcloud.OrderPlusService;
 import com.youyuan.springcloud.OrderProccessor;
 import com.youyuan.springcloud.bean.BaseOrderDto;
+import com.youyuan.springcloud.bean.OrderInfo;
 import com.youyuan.springcloud.bean.OrderResponseDto;
 import com.youyuan.springcloud.bean.ResultDto;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,18 @@ public class OrderPlusServiceImpl implements OrderPlusService {
 
     @Override
     public ResultDto<OrderResponseDto> orderSubmit(BaseOrderDto orderDto) {
-        return orderTransmit(orderDto);
+        OrderProccessor orderProccessor = orderTransmit(orderDto.getChannelId());
+        //基础数据校验
+        orderProccessor.validateParam(orderDto);
+        //渠道校验
+        OrderInfo orderInfo = new OrderInfo();
+        orderProccessor.verifyChannel(orderDto, orderInfo);
+        //扣减库存
+        orderProccessor.deductionStorage(orderDto, orderInfo);
+        //保存订单
+        orderProccessor.createOrderRoom(orderDto, orderInfo);
+
+        return null;
     }
 
     /**
@@ -58,6 +70,21 @@ public class OrderPlusServiceImpl implements OrderPlusService {
                 return meiTuanOrderProccessor.validateParam(orderDto);
             case 11:
                 return fliggyOrderProccessor.validateParam(orderDto);
+            default:
+                return null;
+        }
+    }
+
+    private OrderProccessor orderTransmit(Integer channelId) {
+        switch (channelId) {
+            case 1:
+                return weChatOrderProccessor;
+            case 3:
+                return pmsOrderProccessor;
+            case 8:
+                return meiTuanOrderProccessor;
+            case 11:
+                return fliggyOrderProccessor;
             default:
                 return null;
         }

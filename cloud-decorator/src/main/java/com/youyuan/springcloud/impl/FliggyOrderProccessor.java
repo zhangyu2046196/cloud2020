@@ -33,6 +33,7 @@ public class FliggyOrderProccessor extends DecoratorOrderProccessor {
 
     @Override
     public ResultDto<OrderResponseDto> validateParam(BaseOrderDto orderDto) {
+        log.info("飞猪");
         ResultDto<OrderResponseDto> orderResponseDtoResultDto = super.validateParam(orderDto);
         //执行验证渠道逻辑
         if (orderValidateService.validateResult(orderResponseDtoResultDto)) {

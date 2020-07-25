@@ -5,6 +5,7 @@ import com.youyuan.springcloud.bean.BaseOrderDto;
 import com.youyuan.springcloud.bean.OrderInfo;
 import com.youyuan.springcloud.bean.OrderResponseDto;
 import com.youyuan.springcloud.bean.ResultDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
  * @date 创建时间：2020/7/6 19:54<br>
  */
 @Service
+@Slf4j
 public class PmsOrderProccessor extends DecoratorOrderProccessor {
 
     private final OrderProccessor baseOrderProccessor;
@@ -27,6 +29,7 @@ public class PmsOrderProccessor extends DecoratorOrderProccessor {
 
     @Override
     public ResultDto<OrderResponseDto> validateParam(BaseOrderDto orderDto) {
+        log.info("pms");
         super.validateParam(orderDto);
         //TODO 1.房费校验
         //TODO 2.协议单位校验
