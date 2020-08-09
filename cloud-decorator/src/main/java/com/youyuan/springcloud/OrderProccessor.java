@@ -15,6 +15,7 @@ import com.youyuan.springcloud.bean.ResultDto;
  */
 public interface OrderProccessor {
 
+
     /**
      * 方法名:  validateParam <br>
      * 方法描述: 基础参数校验 <br>

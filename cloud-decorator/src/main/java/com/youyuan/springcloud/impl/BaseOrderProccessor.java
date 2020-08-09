@@ -25,6 +25,7 @@ public class BaseOrderProccessor implements OrderProccessor {
     @Override
     public ResultDto<OrderResponseDto> validateParam(BaseOrderDto orderDto) {
         log.info("数据校验—基础");
+        log.info("钩子方法的值:");
         return ResultDto.success();
     }
 

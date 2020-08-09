@@ -5,6 +5,7 @@ import com.youyuan.springcloud.bean.BaseOrderDto;
 import com.youyuan.springcloud.bean.OrderInfo;
 import com.youyuan.springcloud.bean.OrderResponseDto;
 import com.youyuan.springcloud.bean.ResultDto;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 类名称：DecoratorOrderProccessor <br>
@@ -17,6 +18,9 @@ import com.youyuan.springcloud.bean.ResultDto;
 public class DecoratorOrderProccessor implements OrderProccessor {
 
     private OrderProccessor orderProccessor;
+
+    @Autowired
+    private ConfirmServiceImpl confirmServiceImpl;
 
     public DecoratorOrderProccessor(OrderProccessor orderProccessor) {
         this.orderProccessor = orderProccessor;
@@ -41,5 +45,10 @@ public class DecoratorOrderProccessor implements OrderProccessor {
     @Override
     public ResultDto<OrderResponseDto> createOrderRoom(BaseOrderDto orderDto, OrderInfo orderInfo) {
         return orderProccessor.createOrderRoom(orderDto, orderInfo);
+    }
+
+    public Boolean isConfirm() {
+        confirmServiceImpl.teConfirm();
+        return Boolean.TRUE;
     }
 }

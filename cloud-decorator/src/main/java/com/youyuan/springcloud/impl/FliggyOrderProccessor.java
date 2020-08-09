@@ -34,6 +34,7 @@ public class FliggyOrderProccessor extends DecoratorOrderProccessor {
     @Override
     public ResultDto<OrderResponseDto> validateParam(BaseOrderDto orderDto) {
         log.info("飞猪");
+        isConfirm();
         ResultDto<OrderResponseDto> orderResponseDtoResultDto = super.validateParam(orderDto);
         //执行验证渠道逻辑
         if (orderValidateService.validateResult(orderResponseDtoResultDto)) {
@@ -63,12 +64,6 @@ public class FliggyOrderProccessor extends DecoratorOrderProccessor {
         if (orderValidateService.validateResult(orderResponseDtoResultDto)) {
             orderResponseDtoResultDto = createOrderRoom(orderDto, orderInfo);
         }
-        return orderResponseDtoResultDto;
-    }
-
-    @Override
-    public ResultDto<OrderResponseDto> createOrderRoom(BaseOrderDto orderDto, OrderInfo orderInfo) {
-        ResultDto<OrderResponseDto> orderResponseDtoResultDto = super.createOrderRoom(orderDto, orderInfo);
         return orderResponseDtoResultDto;
     }
 }
