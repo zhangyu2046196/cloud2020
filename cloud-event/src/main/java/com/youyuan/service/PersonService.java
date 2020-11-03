@@ -20,6 +20,6 @@ public class PersonService {
 
     public void create(Person person) {
         personDao.create(person);
-        int ab = 10 / 0;
+//        int ab = 10 / 0;
     }
 }

@@ -1,0 +1,23 @@
+server:
+  port: 9899
+spring:
+  application:
+    name: cloud-listener
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  # nacos 地 址
+
+mybatis:
+  mapper-locations: classpath:mapper/*xml
+  type-aliases-package: com.youyuan.domain    #所有domain别名类所在的包
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

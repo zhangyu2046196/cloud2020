@@ -3,12 +3,12 @@ spring:
     name: cloud-decorator
   main:
     allow-bean-definition-overriding: true
-  cloud:
-    consul:
-      enabled: false
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+#  cloud:
+#    consul:
+#      enabled: false
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
 server:
   port: 9899
 management:
