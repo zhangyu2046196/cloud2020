@@ -46,6 +46,7 @@
         <module>cloud-event</module>
         <module>cloud-decorator</module>
         <module>cloud_listener</module>
+        <module>cloud-redis-delay-queue</module>
     </modules>
     <packaging>pom</packaging>
 

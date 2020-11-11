@@ -1,0 +1,10 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+redisson:
+  redisModel: SINGLE
+  singleConfig:
+    address: redis://127.0.0.1:6379
