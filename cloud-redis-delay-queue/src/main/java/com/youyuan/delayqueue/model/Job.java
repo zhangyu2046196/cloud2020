@@ -3,6 +3,7 @@ package com.youyuan.delayqueue.model;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -50,5 +51,6 @@ public class Job implements Serializable {
     /**
      * 消息来源信息
      */
+    @NotNull
     private Integer sourceType;
 }
