@@ -1,0 +1,54 @@
+server:
+  port: 9089
+
+spring:
+  application:
+    name: sharding-sphere-cipher
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: 8e02fa3f-a4ef-4d6f-9d05-57dc38931ce9   #注册到指定命名空间
+      config:
+        server-addr: localhost:8848    #指定配置中心地址
+  shardingsphere:
+    datasource:      #数据源配置
+      names: ds
+      ds:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver     #mysql驱动包
+        url: jdbc:mysql://localhost:3306/cipher?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+        username: root
+        password: 123456
+    encrypt:
+      encryptors:
+        encryptor_aes:
+          type: aes  #加解密器类型，可自定义或选择内置类型：MD5/AES
+          props:
+            aes.key.value: youyuan2018  #属性配置, 注意：使用AES加密器，需要配置AES加密器的KEY属性：aes.key.value
+          qualifiedColumns: user.password
+      tables:
+        user:
+          columns:
+            passowrd:  #logicColumn
+              cipherColumn: passowrd  #cipherColumn
+              encryptor: encryptor_aes  #加密器配置
+      properties:
+        sql:
+          show: true
+
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.youyuan.domain
